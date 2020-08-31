@@ -24,6 +24,7 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(chennai);
 		
+		
 		Station vijayawada = new Station();
 		stationFacility.add("Electronic Ticket counter");
 		stationFacility.add("Restrooms");
@@ -31,6 +32,7 @@ public class TrainSchedule{
 		vijayawada.addFacility(stationFacility);
 		stationFacility.clear();
 		stationList.add(vijayawada);
+	
 	
 		Station pune = new Station();
 		stationFacility.add("Free Wifi Unlimited");
@@ -40,6 +42,7 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(pune);
 	
+	
 		Station wadi = new Station();
 		stationFacility.add("Free Cloak Room");
 		stationFacility.add("Secured Baggage counters");
@@ -47,6 +50,7 @@ public class TrainSchedule{
 		wadi.addFacility(stationFacility);
 		stationFacility.clear();
 		stationList.add(wadi);
+		
 		
 		Station solapur = new Station();
 		stationFacility.add("AI based ticket counter");
@@ -56,8 +60,10 @@ public class TrainSchedule{
 	    stationFacility.clear();
 	    stationList.add(solapur);
 		
+		
 		mumbaiExpress.addStations(stationList);
 		trainList.add(mumbaiExpress);
+		stationList.clear();
 	
 		
 		
@@ -71,6 +77,7 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(madurai);
 		
+		
 		Station sattur = new Station();
 		stationFacility.add("Convenience Stores");
 		sattur.initialize("STR","Sattur",true);
@@ -79,17 +86,20 @@ public class TrainSchedule{
 		stationList.add(sattur);
 		
 		
+		
 		Station thiruparangundram = new Station();
 		stationFacility.add("Lost and Found centres");
 		thiruparangundram.initialize("TPR","Thiruparangundram",false);
 		thiruparangundram.addFacility(stationFacility);
 		stationFacility.clear();
 		stationList.add(thiruparangundram);
+		
 	 
 	 
 
 		maduraiExpress.addStations(stationList);
 		trainList.add(maduraiExpress);
+		stationList.clear();
 
 	
 
@@ -104,12 +114,14 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(virudhunagar);
 		
+		
 		Station kovilpatti = new Station();
 		stationFacility.add("Waiting rooms");
 		kovilpatti.initialize("CVP","Kovilpatti",true);
 		kovilpatti.addFacility(stationFacility);
 		stationFacility.clear();
 		stationList.add(kovilpatti);
+		
 		
 		Station kayathar = new Station();
 		stationFacility.add("Taxi Ranks");
@@ -118,6 +130,7 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(kayathar);
 		
+		
 		Station aralvaiMozhi = new Station();
 		stationFacility.add("Car Parking Paid ");
 		aralvaiMozhi.initialize("AVL","AralvaiMozhi",false);
@@ -125,8 +138,10 @@ public class TrainSchedule{
 		stationFacility.clear();
 	    stationList.add(aralvaiMozhi);
 		
+		
 		nagercoilExpress.addStations(stationList);
 		trainList.add(nagercoilExpress);
+		stationList.clear();
       
 		
 
@@ -143,12 +158,14 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(kallupatti);
 		
+		
 		Station malamadai = new Station();
 		stationFacility.add("Left luggage finding Squads");
 		malamadai.initialize("MDI","Malamadai",false);
 		malamadai.addFacility(stationFacility);
 		stationFacility.clear();
 		stationList.add(malamadai);
+		
 		
 		Station tiruchirapalli = new Station();
 		stationFacility.add("Tourist guide from Railway Department");
@@ -157,41 +174,57 @@ public class TrainSchedule{
 		stationFacility.clear();
 		stationList.add(tiruchirapalli);
 		
+		
 		vaigaiExpress.addStations(stationList);
 		trainList.add(vaigaiExpress);
+		stationList.clear();
 		
 	
+		
+		System.out.println("Please enter your Destination-------->");
+		Scanner destinationPoint = new Scanner(System.in);
+		String dest = destinationPoint.next();
+		
 		
 		
 		System.out.println("Please enter  the facility of a station----->");
 		Scanner trainStops = new Scanner(System.in);
-		String cde = trainStops.next();
-		
-	
+		String cde = trainStops.nextLine();
 		
 		
 		for(int i=0;i<trainList.size();i++){
 			Train currentTrain = (Train)trainList.get(i);
+			if(currentTrain.destination.equals(dest)){
+				//currentTrain.print();
+				
+				
 	        for( int j=0;j<currentTrain.stationList.size();j++){
 				Station currentStation = (Station)currentTrain.stationList.get(j);
-				currentTrain.print();
-				currentStation.print();
+				
+				
+				
 				
 					 if(currentStation.stationFacility.contains(cde)){
-					 System.out.println("The station which having this facility is------>");
-					 currentTrain.print();
+					 System.out.println("The station which having this facility is as follows......");
 					 currentStation.print();
-					 
-					 
-				
-				}
-			}				
-	
+					 currentTrain.print();
+					 }
 
-		     
-		}
+				}
 			
-	}
+			}
+			
+			else {
+					System.out.println("The facility " + cde + " is not found in any  station on the route of train " + currentTrain.trainName);
+					
+				}
+				
+				
+	    }
+				
+				
+			
+        }
 	}
 
 
